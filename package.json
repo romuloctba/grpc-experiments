@@ -1,0 +1,22 @@
+{
+  "name": "grpc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run:server": "node src/server.js",
+    "run:client": "node src/client.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "google-protobuf": "^3.19.4",
+    "protobufjs": "^6.11.2"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.5.5",
+    "@grpc/proto-loader": "^0.6.9",
+    "grpc": "^1.24.11"
+  }
+}
