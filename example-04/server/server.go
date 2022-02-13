@@ -7,25 +7,27 @@ import (
 	"sync"
 	"time"
 
-	pb "../proto"
+	pb "github.com/romuloctba/grpc-experiments/example-04/proto"
 
 	"google.golang.org/grpc"
 )
 
-type server struct{}
+type server struct {
+	pb.UnimplementedStreamServiceServer
+}
 
 func (s server) FetchResponse(in *pb.Request, srv pb.StreamService_FetchResponseServer) error {
 
 	log.Printf("fetch response for id : %d", in.Id)
 
-  	//use wait group to allow process to be concurrent
+	//use wait group to allow process to be concurrent
 	var wg sync.WaitGroup
 	for i := 0; i < 5; i++ {
 		wg.Add(1)
 		go func(count int64) {
 			defer wg.Done()
 
-      			//time sleep to simulate server process time
+			//time sleep to simulate server process time
 			time.Sleep(time.Duration(count) * time.Second)
 			resp := pb.Response{Result: fmt.Sprintf("Request #%d For Id:%d", count, in.Id)}
 			if err := srv.Send(&resp); err != nil {

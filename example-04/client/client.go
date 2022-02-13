@@ -5,14 +5,15 @@ import (
 	"io"
 	"log"
 
-	pb "../proto"
+	pb "github.com/romuloctba/grpc-experiments/example-04/proto"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 )
 
 func main() {
 	// dial server
-	conn, err := grpc.Dial(":50005", grpc.WithInsecure())
+	conn, err := grpc.Dial(":50005", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("can not connect with server %v", err)
 	}
