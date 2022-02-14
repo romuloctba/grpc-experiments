@@ -1,5 +1,12 @@
 # gRPC POCs
 
+I created this repo to save some gRPC studies.
+
+Each example lives in a folder, and they all have their own `Readme.md` with some specific info.
+
+Also, the tutorial or blog post that I got each example from is available in their `Readme.md`
+
+
 ## Example 01
 
 A simple Nodejs module that works as gRPC server and another NodeJs module that does the client's job.
